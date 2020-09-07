@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import {graphql} from 'react-apollo';
 import { Link } from 'react-router'
+import query from '../queries/fetchSongs'
 
 class SongList extends Component {
     renderSongs() {
@@ -32,15 +33,15 @@ class SongList extends Component {
     }
 }
 
-// GraphQl Queries are not valid JS so we use graphql tag
-const query = gql`
-    {
-        songs {
-            id
-            title
-        }
+const mutation = gql`
+mutation DeleteSong($id: ID){
+    deleteSong( id: $id){
+     id
     }
+  }
 `;
 
 // graphql(query) executes the query. this bonds the query to the component
-export default graphql(query)(SongList);
+export default graphql(mutaiton)(
+    graphql(query)(SongList)
+);
