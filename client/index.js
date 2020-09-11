@@ -4,11 +4,16 @@ import AppolloClient, { ApolloClient } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 import SongList from './components/SongList';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router'
-const client = new ApolloClient({})
 import App from './components/App'
 import SongCreate from './components/SongCreate'
 import SongDetail from './components/SongDetail'
 import './style/style.css'
+
+// This makes it so that you do not have to refetch data after mutations
+// Implications: you must ask for id on each query
+const client = new ApolloClient ({
+  dataIdFromObject: o => o.id 
+})
 
 const Root = () => {
   return (
