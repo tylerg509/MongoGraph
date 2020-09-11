@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class LyricList extends Component {
     render() {
         return (
-            <ul>
+            <ul className="collection">
                 LyricList
             </ul>
         )

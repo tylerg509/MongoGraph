@@ -6,6 +6,16 @@ import LyricCreate from './LyricCreate'
 import LyricList from './LyricsList'
 class SongDetail extends Component {
 
+    renderLyrics() {
+        return this.props.lyrics.map(({ id, content}) => {
+            return (
+                <li key={id}>
+                    {content}
+                </li>
+            )
+        })
+    }
+
     render() {
         const { song } = this.props.data
 
@@ -17,7 +27,7 @@ class SongDetail extends Component {
                 <h3>
                     {song.title}
                 </h3>
-                <LyricList/>
+                <LyricList lyrics={song.lyrics}/>
                 <LyricCreate songId={this.props.params.id}/>
             </div>
         )
