@@ -18,6 +18,7 @@ class SongCreate extends Component {
             variables: {
                 title: this.state.title,
             },
+            // Less performant way to refetch queries. Two requests made.  See index.js for the way to only make one request
             refetchQueries: [{ query }]
 
         }).then(() => hashHistory.push('/'))
